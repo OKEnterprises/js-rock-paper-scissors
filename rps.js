@@ -14,14 +14,33 @@ function aBeatsB(choiceA, choiceB) {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (aBeatsB(playerSelection, computerSelection)) {
-        return 'player'
+        console.log('player');
+        return 'player';
     } else if (aBeatsB(computerSelection, playerSelection)) {
-        return 'computer'
+        console.log('computer');
+        return 'computer';
     } else {
-        return 'draw'
+        console.log('draw');
+        return 'draw';
     }
 }
 
+const btnRock = document.querySelector('#btn-rock');
+btnRock.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+});
+
+const btnPaper = document.querySelector('#btn-paper');
+btnPaper.addEventListener('click', () => {
+    playRound('paper', getComputerChoice());
+});
+
+const btnScissors = document.querySelector('#btn-scissors');
+btnScissors.addEventListener('click', () => {
+    playRound('scissors', getComputerChoice());
+});
+
+/*
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -37,3 +56,4 @@ function game() {
         return `Computer wins, ${computerScore} of 5`
     }
 }
+*/
