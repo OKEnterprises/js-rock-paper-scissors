@@ -25,19 +25,40 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+const resultsDiv = document.querySelector('#results');
+
+let playerScore = 0;
+let computerScore = 0;
+
+function resolveResult(result) {
+    if (result === 'player') {
+        playerScore++;
+    } else if (result === 'computer') {
+        computerScore++;
+    }
+
+    if (playerScore >= 5) {
+        resultsDiv.textContent = 'Congratulations! Player wins!';
+    } else if (computerScore >= 5) {
+        resultsDiv.textContent = 'Too bad... Computer wins.';
+    } else {
+        resultsDiv.textContent = `Player: ${playerScore} Computer: ${computerScore}`
+    }
+}
+
 const btnRock = document.querySelector('#btn-rock');
 btnRock.addEventListener('click', () => {
-    playRound('rock', getComputerChoice());
+    resolveResult(playRound('rock', getComputerChoice()));
 });
 
 const btnPaper = document.querySelector('#btn-paper');
 btnPaper.addEventListener('click', () => {
-    playRound('paper', getComputerChoice());
+    resolveResult(playRound('paper', getComputerChoice()));
 });
 
 const btnScissors = document.querySelector('#btn-scissors');
 btnScissors.addEventListener('click', () => {
-    playRound('scissors', getComputerChoice());
+    resolveResult(playRound('scissors', getComputerChoice()));
 });
 
 /*
